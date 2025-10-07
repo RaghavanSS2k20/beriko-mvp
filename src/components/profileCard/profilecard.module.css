@@ -1,0 +1,126 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  background: white;
+  border-radius: 10px;
+  height: 47vh;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05676576);
+}
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.875rem;
+  height: 75%;
+}
+.headerContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 75%;
+  /* Gradient from transparent at bottom to a color at top */
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.5),
+    #b2b9bd,
+    transparent,
+    transparent
+  );
+  pointer-events: none; /* allows clicks through overlay */
+  /* z-index: 1; */
+}
+
+.heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.badge {
+  border-radius: 13px;
+  padding: 0.3rem;
+  height: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.2rem;
+  justify-content: center;
+  font-size: 10px;
+  width: 4rem;
+  background-color: #f6f6f7;
+}
+
+.ai {
+  background-color: #09c092;
+  color: white;
+}
+
+.userDetails {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  z-index: 1;
+}
+.userDetails h1 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.userDetails p {
+  color: white;
+  font-weight: normal;
+  font-size: 13px;
+}
+.actionPanel {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  height: 25%;
+  padding: 0.3rem;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0.7rem;
+  height: 100%;
+}
+.row p {
+  font-size: 13px;
+  color: #3a4b40;
+}
+.row button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid #09c092;
+  flex: 1;
+
+  border-radius: 13px;
+  background-color: white;
+}
+
+.row .ghost {
+  border: none;
+}
+.row .primary {
+  background-color: #09c092;
+  color: white;
+}
+.row .primary p {
+  color: white;
+}
+
+.headerContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

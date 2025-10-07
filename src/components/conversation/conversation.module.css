@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  margin: 0.4rem 0.75rem;
+  border-radius: 14px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(9, 204, 127, 0.25);
+}
+
+.profileDetails {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.profilePhoto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: rgba(9, 204, 127, 0.08);
+  border: 2px solid rgba(9, 204, 127, 0.25);
+  height: 45px;
+  width: 45px;
+  color: #09cc7f;
+}
+
+.profileContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profileName {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+  margin: 0;
+}
+
+.profileContext {
+  font-size: 13px;
+  color: #555;
+  margin: 0;
+}
+
+.time {
+  font-size: 13px;
+  color: #09cc7f;
+  font-weight: 600;
+}

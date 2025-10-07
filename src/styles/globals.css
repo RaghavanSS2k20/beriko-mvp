@@ -1,42 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+body {
+  margin: 0 !important;
+  font-family: "Poppins", sans-serif; /* apply globally */
+}
+h1,
+p {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --emphasis: #09cc7f;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.app-wrapper {
+  display: flex;
+  justify-content: center;
+  background: #f9fafb;
+  min-height: 100vh;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+.mobile-container {
+  width: 100%;
+  max-width: 420px; /* your mobile width */
+  height: 100vh;
+  background: white;
+  display: flex;
+  flex-direction: column;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.layout {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100vh;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+/* Navbar stays visible at top */
+.layout > :first-child {
+  flex-shrink: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Tabbar stays visible at bottom */
+.layout > :last-child {
+  flex-shrink: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/* Content fills space between them */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

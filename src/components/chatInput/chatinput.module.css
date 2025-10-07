@@ -1,0 +1,35 @@
+.container {
+  position: sticky; /* stays at bottom */
+  bottom: 0;
+  /* padding-bottom: 64px !important; */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background: #fff;
+  /* border-top: 1px solid #ddd; */
+  gap: 8px;
+}
+
+.container input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 9999px; /* pill shape */
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 14px;
+}
+
+.sendButton {
+  background: #09cc7f;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
