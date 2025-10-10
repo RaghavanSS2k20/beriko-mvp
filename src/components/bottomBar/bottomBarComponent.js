@@ -4,7 +4,7 @@ import { FaUser, FaComments, FaRobot, FaHeart } from "react-icons/fa";
 
 const tabs = [
   { path: "/matches", label: "Matches", icon: <FaHeart /> },
-  { path: "/conversations", label: "Chats", icon: <FaComments /> },
+  { path: "/conversation", label: "Chats", icon: <FaComments /> },
   { path: "/chat", label: "AI", icon: <FaRobot /> },
   { path: "/profile", label: "Profile", icon: <FaUser /> },
 ];

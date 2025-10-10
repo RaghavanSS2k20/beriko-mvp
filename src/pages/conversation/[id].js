@@ -60,7 +60,7 @@ export default function ConversationScreen() {
             title: otherUser.name,
             subtitle: "Online",
             avatar: true,
-            backRoute: "/conversations",
+            backRoute: "/conversation",
             showFilter: false,
           });
         }
@@ -93,8 +93,16 @@ export default function ConversationScreen() {
       //   setMessages(data);
     });
 
+    // socket.on("new_message", (msg) => {
+    //   setMessages((prev) => [...prev, msg]);
+    // });
     socket.on("new_message", (msg) => {
-      setMessages((prev) => [...prev, msg]);
+      console.log("new message");
+      setMessages((prev) =>
+        prev
+          .filter((m) => m.status !== "pending" || m.content !== msg.content)
+          .concat(msg)
+      );
     });
 
     socket.on("typing", () => setTyping(true));
@@ -120,9 +128,29 @@ export default function ConversationScreen() {
     scrollToBottom();
   }, [messages, typing]);
 
+  // const sendMessage = (text) => {
+  //   console.log("SEND MESSAGE CALLED : ", text);
+  //   if (!text.trim()) return;
+
+  //   socket.emit("send_user_message", {
+  //     sender: userId,
+  //     participants: participants.map((p) => p.user_id),
+  //     conversation_id: conversationId,
+  //     content: text,
+  //   });
+  // };
   const sendMessage = (text) => {
-    console.log("SEND MESSAGE CALLED : ", text);
     if (!text.trim()) return;
+
+    // show a pending message while waiting for backend confirmation
+    const tempMsg = {
+      id: `temp-${Date.now()}`,
+      sender: userId,
+      content: text,
+      timestamp: new Date().toISOString(), // local ISO (temporary)
+      status: "pending",
+    };
+    setMessages((prev) => [...prev, tempMsg]);
 
     socket.emit("send_user_message", {
       sender: userId,

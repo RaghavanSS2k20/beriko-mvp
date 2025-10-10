@@ -73,7 +73,7 @@ export default function Conversation({ conversation, user }) {
   };
 
   const handleClick = () => {
-    router.push(`/conversations/${conversation.conversation_id}`);
+    router.push(`/conversation/${conversation.conversation_id}`);
   };
 
   return (

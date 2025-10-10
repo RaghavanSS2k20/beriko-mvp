@@ -1,97 +1,74 @@
-import { useState } from "react";
-import ProfileCard from "@/components/profileCard/profileCard.component";
-import { FiSparkles, FiRefreshCw, FiFilter } from "react-icons/fi";
-import styles from "../styles/matches.module.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavbar } from "@/context/NavbarContext";
+import { getMatches } from "@/services/matchesService";
+import ProfileCard from "@/components/profileCard/profileCard.component";
+import styles from "../styles/matches.module.css";
 
-const mockMatches = [
-  // same mockMatches data as before
-  {
-    id: 1,
-    name: "Emma",
-    location: "San Francisco",
-    score: 94,
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=400&h=600&fit=crop",
-    age: 26,
-    bio: "AI-matched personality: Creative, adventurous, loves deep conversations and weekend hikes.",
-  },
-  {
-    id: 2,
-    name: "Alex",
-    location: "New York",
-    score: 89,
-    imageUrl:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
-    age: 28,
-    bio: "Our AI detected perfect compatibility in humor, life goals, and shared interests in tech.",
-  },
-  {
-    id: 3,
-    name: "Maya",
-    location: "Los Angeles",
-    score: 92,
-    imageUrl:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=600&fit=crop",
-    age: 25,
-    bio: "Personality analysis shows amazing potential for long-term connection and shared values.",
-  },
-  {
-    id: 4,
-    name: "Jordan",
-    location: "Chicago",
-    score: 87,
-    imageUrl:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=600&fit=crop",
-    age: 30,
-    bio: "AI compatibility score based on communication style, lifestyle preferences, and future goals.",
-  },
-  {
-    id: 5,
-    name: "Sofia",
-    location: "Miami",
-    score: 91,
-    imageUrl:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=600&fit=crop",
-    age: 24,
-    bio: "Machine learning analysis found exceptional compatibility in values, humor, and life vision.",
-  },
-  {
-    id: 6,
-    name: "Ryan",
-    location: "Seattle",
-    score: 88,
-    imageUrl:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=600&fit=crop",
-    age: 29,
-    bio: "AI profile matching detected strong potential for meaningful connection and shared interests.",
-  },
-];
+import { useUser } from "@/context/userContext";
 
 export default function MatchesScreen() {
   const { updateNavbar, resetNavbar } = useNavbar();
+  const { userId } = useUser();
+  const [matches, setMatches] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     updateNavbar({
-      title: "matches",
+      title: "Matches",
       subtitle: "Online",
       avatar: false,
-      // showFilter: false,
     });
+
+    async function fetchMatches() {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const response = await getMatches(userId);
+        console.log(response);
+        if (!response.ok) {
+          throw new Error(`Error fetching matches: ${response.statusText}`);
+        }
+        const data = await response.json();
+        setMatches(data.data);
+      } catch (err) {
+        setError(err.message || "Something went wrong");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchMatches();
+
     return () => resetNavbar();
-  }, []);
+  }, [userId]);
+
+  if (loading) {
+    return <div className={styles.loading}>Loading matches...</div>;
+  }
+
+  if (error) {
+    return <div className={styles.error}>Error: {error}</div>;
+  }
+
   return (
     <div className={styles.container}>
-      {mockMatches.map((profile) => (
-        <ProfileCard
-          key={profile.id}
-          name={profile.name}
-          age={profile.age}
-          location={profile.location}
-          matchPercent={profile.matchPercent}
-          description={profile.description}
-        />
-      ))}
+      {matches.length === 0 ? (
+        <p>No matches found.</p>
+      ) : (
+        matches.map((profile) => (
+          <ProfileCard
+            key={profile.user_id}
+            name={profile.user_data.name}
+            age={profile.age}
+            id={profile.user_id}
+            location={profile.location}
+            matchPercent={profile.score * 100}
+            description={profile.insight}
+          />
+        ))
+      )}
     </div>
   );
 }
