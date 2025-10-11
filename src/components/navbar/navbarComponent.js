@@ -14,7 +14,7 @@ export default function NavBar() {
       <div className={styles.navContent}>
         {/* Left Section — back + avatar + title */}
         <div className={styles.leftSection}>
-          {backRoute && (
+          {backRoute && backRoute.length > 0 && (
             <button
               className={styles.backBtn}
               onClick={() => router.push(backRoute)}
