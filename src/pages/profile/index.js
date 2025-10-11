@@ -1,7 +1,8 @@
-import styles from "../styles/profile.module.css";
+import styles from "../../styles/profile.module.css";
 import { useEffect, useState } from "react";
 
 import { useUser } from "@/context/userContext";
+import { useNavbar } from "@/context/NavbarContext";
 import { useRouter } from "next/router";
 import {
   getProfileForUser,
@@ -18,6 +19,7 @@ import {
 
 export default function ProfilePage() {
   const { userId } = useUser();
+  const { updateNavbar, resetNavbar } = useNavbar();
   const router = useRouter();
 
   const [profileData, setProfileData] = useState(null);
@@ -32,11 +34,21 @@ export default function ProfilePage() {
     router.push("/conversation");
   };
 
+  const routeToSettings = () => {
+    router.push("/profile/settings");
+  };
+
   const routeToMatches = () => {
     router.push("/matches");
   };
 
   useEffect(() => {
+    updateNavbar({
+      title: "Myself",
+      subtitle: "Online",
+      avatar: false,
+      //   backRoute: "/profile",
+    });
     if (!userId) return;
 
     // ✅ Run both in parallel but handle separately
@@ -160,7 +172,7 @@ export default function ProfilePage() {
           </div>
         </div>
         <div className={styles.row}>
-          <div className={styles.button}>
+          <div className={styles.button} onClick={routeToSettings}>
             <Settings size={20} />
             <p>Settings</p>
           </div>
