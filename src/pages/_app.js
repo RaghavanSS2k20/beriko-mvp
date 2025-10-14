@@ -9,7 +9,9 @@ import { NavbarProvider } from "@/context/NavbarContext";
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   const hideTabBar =
-    router.pathname === "/" || router.asPath.startsWith("/conversation/"); // hide on landing page
+    router.pathname === "/" ||
+    router.asPath.startsWith("/conversation/") ||
+    router.asPath.startsWith("/index2"); // hide on landing page
   const hideNavBar = router.pathname === "/"; // 👈 also hide navbar on landing
 
   return (

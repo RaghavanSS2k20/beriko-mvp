@@ -95,6 +95,7 @@
 .row p {
   font-size: 13px;
   color: #3a4b40;
+  font-weight: 500;
 }
 .row button {
   display: flex;

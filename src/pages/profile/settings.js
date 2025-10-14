@@ -73,8 +73,8 @@ export default function ProfileSetupPage() {
                 city: user.location.city || "",
                 state: user.location.state || "",
                 country_code: user.location.country_code || "",
-                latitude: user.location.lat || null,
-                longitude: user.location.lon || null,
+                latitude: user.location.latitude || null,
+                longitude: user.location.longitude || null,
               });
               console.log("Formatted", formatted);
               setLocationQuery(formatted); // shows in input box
@@ -121,6 +121,7 @@ export default function ProfileSetupPage() {
 
   // 🔹 When user selects a location
   const handleLocationSelect = (loc) => {
+    console.log(loc);
     setSelectedLocation({
       city: loc.city,
       state: loc.state,
@@ -153,6 +154,8 @@ export default function ProfileSetupPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log(formData);
+
     const payload = {
       user_id: userId,
       name: formData.name,
@@ -163,8 +166,8 @@ export default function ProfileSetupPage() {
       city: formData.city,
       state: formData.state,
       country_code: formData.country_code,
-      lat: formData.latitude,
-      lon: formData.longitude,
+      latitude: formData.latitude,
+      longitude: formData.longitude,
     };
 
     console.log("📦 Sending updated user profile:", payload);
@@ -172,7 +175,8 @@ export default function ProfileSetupPage() {
     const res = await updateUserProfile(payload);
     if (res.ok) {
       console.log("success");
-      console.log(res);
+      // console.log(res);
+      router.push("/profile");
     }
     // TODO: Add PUT/POST API call here
     // Example:

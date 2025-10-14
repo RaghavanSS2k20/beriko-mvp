@@ -104,17 +104,19 @@ export default function ProfilePage() {
               <p>
                 {profileData?.user?.location
                   ? `${profileData.user.location.city || ""}${
-                      profileData.user.location.city &&
-                      profileData.user.location.name
-                        ? ", "
+                      profileData.user.location.state
+                        ? `, ${profileData.user.location.state}`
                         : ""
-                    }${profileData.user.location.name || ""}`.trim() ||
-                    "Location not available"
+                    }${
+                      profileData.user.location.country_code
+                        ? `, ${profileData.user.location.country_code}`
+                        : ""
+                    }`.trim() || "Location not available"
                   : "Location not available"}
               </p>
             </div>
           </div>
-          <div className={styles["edit-button"]}>
+          <div className={styles["edit-button"]} onClick={routeToSettings}>
             <SquarePen size={18} />
           </div>
         </div>
