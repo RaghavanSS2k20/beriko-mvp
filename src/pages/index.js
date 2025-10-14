@@ -45,6 +45,10 @@ export default function HomeScreen() {
     const form = e.target;
     const username = form.username.value.trim();
     const name = isExistingUser ? null : form.name.value.trim();
+    const gender = isExistingUser ? null : form.gender.value;
+    const preferred_gender = isExistingUser
+      ? null
+      : form.preferred_gender.value;
 
     if (!username || (!isExistingUser && !name)) return;
 
@@ -72,6 +76,8 @@ export default function HomeScreen() {
           user_id: username,
           name,
           age,
+          gender,
+          preferred_gender,
           ...(selectedLocation && {
             city: selectedLocation.city,
             state: selectedLocation.state,
@@ -100,7 +106,7 @@ export default function HomeScreen() {
         }
 
         setUserId(username);
-        router.push("/index");
+        router.push("/matches");
       }
     } catch (err) {
       console.error("Auth error:", err);
@@ -217,32 +223,42 @@ export default function HomeScreen() {
                   <option value="">Select gender</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
-                  <option value="gay">Gay</option>
+                  {/* <option value="gay">Gay</option> */}
                 </select>
               </div>
             </div>
-
-            <div className={styles.formItem}>
-              <label htmlFor="location">Location</label>
-              <div className={styles.locationWrapper}>
-                <input
-                  type="text"
-                  id="location"
-                  name="location"
-                  value={locationQuery}
-                  placeholder="City"
-                  onChange={handleLocationChange}
-                />
-                <span className={styles.locationIcon}>📍</span>
-                {locationResults.length > 0 && (
-                  <ul className={styles.locationDropdown}>
-                    {locationResults.map((loc, i) => (
-                      <li key={i} onClick={() => handleLocationSelect(loc)}>
-                        {loc.display_name}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+            <div className={styles.formRow}>
+              <div className={styles.formItem}>
+                <label htmlFor="location">Location</label>
+                <div className={styles.locationWrapper}>
+                  <input
+                    type="text"
+                    id="location"
+                    name="location"
+                    value={locationQuery}
+                    placeholder="City"
+                    onChange={handleLocationChange}
+                  />
+                  <span className={styles.locationIcon}>📍</span>
+                  {locationResults.length > 0 && (
+                    <ul className={styles.locationDropdown}>
+                      {locationResults.map((loc, i) => (
+                        <li key={i} onClick={() => handleLocationSelect(loc)}>
+                          {loc.display_name}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+              <div className={styles.formItem}>
+                <label htmlFor="preferred_gender">Preferred gender</label>
+                <select id="preferred_gender" name="preferred_gender">
+                  <option value="">Preferred gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  {/* <option value="gay">Gay</option> */}
+                </select>
               </div>
             </div>
           </>
