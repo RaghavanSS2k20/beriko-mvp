@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./ChatInput.module.css"; // your styles
+import styles from "./chatinput.module.css"; // your styles
 
 export default function ChatInput({ onSend }) {
   const [value, setValue] = useState("");
