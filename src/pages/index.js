@@ -223,6 +223,7 @@ export default function HomeScreen() {
                   type="number"
                   id="age"
                   min="18"
+                  max="100"
                   name="age"
                   placeholder="Age"
                 />
