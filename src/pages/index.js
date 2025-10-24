@@ -13,6 +13,7 @@ export default function HomeScreen() {
 
   const [locationQuery, setLocationQuery] = useState("");
   const [locationResults, setLocationResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState(null);
 
   const handleLocationChange = async (e) => {
@@ -42,6 +43,8 @@ export default function HomeScreen() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // ⏳ start loading
+
     const form = e.target;
     const username = form.username.value.trim();
     const name = isExistingUser ? null : form.name.value.trim();
@@ -50,26 +53,24 @@ export default function HomeScreen() {
       ? null
       : form.preferred_gender.value;
 
-    if (!username || (!isExistingUser && !name)) return;
+    if (!username || (!isExistingUser && !name)) {
+      setIsLoading(false);
+      return;
+    }
 
     try {
       if (isExistingUser) {
-        // ✅ Existing user: just check if user exists
         const check = await fetch(`${environment.apiUrl}/user/${username}`);
         if (!check.ok) {
-          console.log(check);
-          if (check.status === 404) {
-            alert("User id not found");
-          } else {
-            alert("User Fetching error");
-          }
+          if (check.status === 404) alert("User id not found");
+          else alert("User Fetching error");
+          setIsLoading(false);
           return;
         }
 
         setUserId(username);
         router.push("/matches");
       } else {
-        // 🆕 New user: register
         const age = parseInt(form.age.value.trim(), 10);
 
         const payload = {
@@ -96,12 +97,9 @@ export default function HomeScreen() {
         });
 
         if (!res.ok) {
-          console.log(res);
-          if (res.status === 400) {
-            alert("Username! Already exists!");
-          } else {
-            alert("User creation failed!");
-          }
+          if (res.status === 400) alert("Username already exists!");
+          else alert("User creation failed!");
+          setIsLoading(false);
           return;
         }
 
@@ -113,6 +111,8 @@ export default function HomeScreen() {
       alert(
         isExistingUser ? "User not found!" : "Something went wrong, try again!"
       );
+    } finally {
+      setIsLoading(false); // ✅ always stop loading
     }
   };
 
@@ -195,6 +195,11 @@ export default function HomeScreen() {
             type="text"
             id="username"
             name="username"
+            onInput={(e) => {
+              e.target.value = e.target.value
+                .toLowerCase() // force lowercase
+                .replace(/[^a-z0-9_]/g, ""); // strip invalid chars
+            }}
             placeholder="Choose a username"
           />
         </div>
@@ -214,7 +219,13 @@ export default function HomeScreen() {
             <div className={styles.formRow}>
               <div className={styles.formItem}>
                 <label htmlFor="age">Age</label>
-                <input type="number" id="age" name="age" placeholder="Age" />
+                <input
+                  type="number"
+                  id="age"
+                  min="18"
+                  name="age"
+                  placeholder="Age"
+                />
               </div>
 
               <div className={styles.formItem}>
@@ -264,7 +275,9 @@ export default function HomeScreen() {
           </>
         )}
 
-        <button type="submit">{isExistingUser ? "Login" : "Register"}</button>
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? "Loading..." : isExistingUser ? "Login" : "Register"}
+        </button>
 
         <div className={styles.toggleLink}>
           {isExistingUser ? (

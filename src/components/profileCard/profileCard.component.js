@@ -54,13 +54,13 @@ export default function ProfileCard({
           <div className={`${styles.badge} ${styles.ai}`}>AI Match</div>
           <div className={`${styles.badge}`}>
             <Star strokeWidth={1.25} size={"15px"} color="#09c092" />
-            {matchPercent}%
+            {Math.round(matchPercent)}%
           </div>
         </div>
         <div className={styles.userDetails}>
           <h1>{name}</h1>
           <p>{location ? location : "Location not available"}</p>
-          <p>{matchPercent}% match</p>
+          <p>{Math.round(matchPercent)}% match</p>
         </div>
       </div>
 
