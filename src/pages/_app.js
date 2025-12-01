@@ -5,9 +5,19 @@ import NavBar from "@/components/navbar/navbarComponent";
 import { UserProvider } from "@/context/userContext";
 import { useRouter } from "next/router";
 import { NavbarProvider } from "@/context/NavbarContext";
+import { Provider } from "@/components/ui/provider";
+import { ColorModeProvider } from "@/components/ui/color-mode";
+import { Theme } from "@chakra-ui/react";
+// import theme from "@/theme";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
+  const theme = {
+    config: {
+      initialColorMode: "light",
+      useSystemColorMode: false,
+    },
+  };
   const hideTabBar =
     router.pathname === "/" ||
     router.asPath.startsWith("/conversation/") ||
@@ -17,17 +27,21 @@ export default function App({ Component, pageProps }) {
   return (
     <div className="app-wrapper">
       <div className="mobile-container">
-        <UserProvider>
-          <NavbarProvider>
-            <div className="layout">
-              {!hideNavBar && <NavBar />}
-              <div className="content">
-                <Component {...pageProps} />
-              </div>
-              {!hideTabBar && <TabBar />}
-            </div>
-          </NavbarProvider>
-        </UserProvider>
+        <Provider>
+          <Theme appearance="light">
+            <UserProvider>
+              <NavbarProvider>
+                <div className="layout">
+                  {!hideNavBar && <NavBar />}
+                  <div className="content">
+                    <Component {...pageProps} />
+                  </div>
+                  {!hideTabBar && <TabBar />}
+                </div>
+              </NavbarProvider>
+            </UserProvider>
+          </Theme>
+        </Provider>
       </div>
     </div>
   );

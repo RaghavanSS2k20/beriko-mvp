@@ -7,7 +7,7 @@ import { useUser } from "@/context/userContext";
 import { MessageCircle, Sparkles, Heart } from "lucide-react";
 
 export default function HomeScreen() {
-  const { userId, setUserId } = useUser();
+  const { userId, setUserId, setUser } = useUser();
   const router = useRouter();
   const [isExistingUser, setIsExistingUser] = useState(false);
 
@@ -67,8 +67,11 @@ export default function HomeScreen() {
           setIsLoading(false);
           return;
         }
+        const response_data = await check.json();
+        const user = response_data["data"];
 
         setUserId(username);
+        setUser(user);
         router.push("/matches");
       } else {
         const age = parseInt(form.age.value.trim(), 10);

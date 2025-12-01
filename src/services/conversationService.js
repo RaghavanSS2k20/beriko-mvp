@@ -41,3 +41,17 @@ export function createConversation(user_id, participant2) {
     body: JSON.stringify({ participants }),
   });
 }
+
+export function getConversationBetweenUsers(user1_id, user2_id) {
+  if (!user1_id || !user2_id) return;
+
+  return fetch(
+    `${environment.apiUrl}/conversation/between/${user1_id}/${user2_id}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+}

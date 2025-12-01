@@ -1,11 +1,6 @@
-import styles from "./profilecard.module.css";
-import { Star, X, MessageCircleHeart } from "lucide-react";
-import { useRouter } from "next/router";
 import { useState } from "react";
-
-import { useUser } from "@/context/userContext";
-import { createConversation } from "@/services/conversationService";
-
+import styles from "./profilecard.module.css";
+import { Star, X, Flower, MessageCircle } from "lucide-react";
 export default function ProfileCard({
   name,
   age,
@@ -13,38 +8,25 @@ export default function ProfileCard({
   matchPercent,
   description,
   id,
+  handleSendFlowersClick,
+  handleDeleteClick,
+  mutual,
 }) {
-  const { userId } = useUser();
-  const router = useRouter();
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  async function handleChatClick() {
-    setLoading(true);
-    setError(null);
-
-    try {
-      console.log("USER ID : ", userId, id);
-      const response = await createConversation(userId, id);
-      if (!response.ok) {
-        console.log(response.status);
-        return;
-      }
-      const conversation = await response.json();
-      console.log("conversation", conversation);
-      if (conversation.data) {
-        const conversationId = conversation.data._id?.$oid;
-        router.push(`/conversation/${conversationId}`);
-      } else {
-        setError(conversation.error || "Failed to start conversation");
-      }
-    } catch (err) {
-      console.error(err);
-      setError("Something went wrong. Please try again.");
-    } finally {
-      setLoading(false);
-    }
+  // ✅ Corrected click handler
+  function handleActionClick() {
+    const profileData = {
+      id,
+      name,
+      age,
+      location,
+      matchPercent,
+      description,
+      mutual,
+    };
+    handleSendFlowersClick(profileData);
   }
 
   return (
@@ -53,7 +35,7 @@ export default function ProfileCard({
         <div className={styles.heading}>
           <div className={`${styles.badge} ${styles.ai}`}>AI Match</div>
           <div className={`${styles.badge}`}>
-            <Star strokeWidth={1.25} size={"15px"} color="#09c092" />
+            <Star size={"15px"} color="#09c092" />
             {Math.round(matchPercent)}%
           </div>
         </div>
@@ -69,18 +51,32 @@ export default function ProfileCard({
           <p>{description}</p>
         </div>
         <div className={styles.row}>
-          <button className={styles.ghost}>
+          <button
+            className={styles.ghost}
+            onClick={() => handleDeleteClick && handleDeleteClick(id)}
+          >
             <X strokeWidth={1.25} size={15} />
             <p>Reject</p>
           </button>
-
           <button
             className={styles.primary}
-            onClick={handleChatClick}
+            onClick={handleActionClick}
             disabled={loading}
           >
-            <MessageCircleHeart strokeWidth={1.25} size={15} />
-            <p>{loading ? "Starting..." : "Chat"}</p>
+            {mutual ? (
+              <MessageCircle strokeWidth={2.25} size={15} />
+            ) : (
+              <Flower strokeWidth={2.25} size={15} />
+            )}
+            <p>
+              {loading
+                ? mutual
+                  ? "Opening..."
+                  : "Starting..."
+                : mutual
+                ? "Chat"
+                : "Send Flowers"}
+            </p>
           </button>
         </div>
 

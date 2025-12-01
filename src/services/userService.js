@@ -32,3 +32,15 @@ export function updateUserProfile(payload) {
     body: JSON.stringify(payload),
   });
 }
+
+export function markUserFamiliar(user_id) {
+  console.log("Marking user called : ", user_id);
+  if (!user_id) return;
+
+  return fetch(`${environment.apiUrl}/user/${user_id}/markfamiliar`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}

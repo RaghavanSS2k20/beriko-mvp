@@ -1,0 +1,80 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 1.5rem 1rem;
+  background-color: #fff;
+  border-radius: 1.25rem 1.25rem 0 0; /* rounded top corners for sheet */
+  text-align: center;
+  gap: 0.875rem;
+}
+
+.heading {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #333;
+  align-self: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.illustration {
+  width: 180px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: black;
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  background-color: #d9eddf;
+  height: 3rem;
+  width: 100%;
+  padding: 1rem;
+  font-weight: 500;
+  border-radius: 11px;
+  color: #386c5f;
+}
+.input:focus {
+  outline: none !important;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.ctaButton {
+  width: 100%;
+  background-color: #09c092;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.75rem 0;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.ctaButton:disabled {
+  cursor: not-allowed;
+}
+
+.ctaButton:hover {
+  background-color: #07a87d;
+}
+
+.footerNote {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 1rem;
+}
