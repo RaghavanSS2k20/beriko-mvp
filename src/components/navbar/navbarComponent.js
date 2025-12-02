@@ -1,14 +1,16 @@
 import { useRouter } from "next/router";
 // import { ChevronLeft, Filter } from "lucide-react";
 import { useNavbar } from "@/context/NavbarContext";
+
 import styles from "./navbar.module.css";
-import { ChevronLeft, Filter, User } from "lucide-react";
+import { ChevronLeft, Filter, User, MessageCircle } from "lucide-react";
 
 export default function NavBar() {
   const router = useRouter();
   const { navbarData } = useNavbar();
   const { title, showFilter, avatar, subtitle, backRoute } = navbarData;
 
+  const isActive = router.pathname === "/conversation";
   return (
     <nav className={styles.navbar}>
       <div className={styles.navContent}>
@@ -34,11 +36,22 @@ export default function NavBar() {
         </div>
 
         {/* Right Section — filter button */}
-        {showFilter && (
-          <button className={styles.filterBtn}>
-            <Filter size={17} />
+        <div className={styles.rightElements}>
+          {showFilter && (
+            <button className={styles.filterBtn}>
+              <Filter size={17} />
+            </button>
+          )}
+          <button
+            className={styles.filterBtn}
+            style={{
+              color: isActive ? "#09cc7f" : "inherit",
+            }}
+            onClick={() => router.push("/conversation")}
+          >
+            <MessageCircle size={17} strokeWidth={2.5} />
           </button>
-        )}
+        </div>
       </div>
     </nav>
   );

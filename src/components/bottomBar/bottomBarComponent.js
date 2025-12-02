@@ -1,10 +1,11 @@
 import { useRouter } from "next/router";
 import styles from "./bottombar.module.css";
 import { FaUser, FaComments, FaRobot, FaHeart } from "react-icons/fa";
+import { GiTwirlyFlower } from "react-icons/gi";
 
 const tabs = [
   { path: "/matches", label: "Matches", icon: <FaHeart /> },
-  { path: "/conversation", label: "Chats", icon: <FaComments /> },
+  { path: "/flowers", label: "Flowers", icon: <GiTwirlyFlower /> },
   { path: "/chat", label: "AI", icon: <FaRobot /> },
   { path: "/profile", label: "Profile", icon: <FaUser /> },
 ];

@@ -2,6 +2,9 @@ const withPWA = require("@ducanh2912/next-pwa").default;
 
 const nextConfig = {
   reactStrictMode: true,
+  experimental: {
+    optimizePackageImports: ["@chakra-ui/react"],
+  },
   pwa: {
     dest: "public",
     register: true,

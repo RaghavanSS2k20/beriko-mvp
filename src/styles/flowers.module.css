@@ -1,0 +1,120 @@
+.container {
+  width: 100%;
+  padding: 16px;
+}
+
+.tabList {
+  display: flex;
+  border-bottom: none;
+  width: 100%;
+  justify-content: center;
+  color: #32392a;
+}
+.tabList button[aria-selected="true"] {
+  color: #32392a !important;
+  font-weight: 500;
+}
+
+/* .chakra-tabs__tab-indicator {
+  background-color: black !important;
+  height: 3px !important;
+} */
+.tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  padding: 12px 0;
+  cursor: pointer;
+  color: black;
+}
+
+.tab[data-state="active"] {
+  color: #09cc7f;
+  border-bottom: 2px solid #09cc7f;
+}
+
+.cardList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 1rem;
+  margin-top: 20px;
+}
+.card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  cursor: pointer;
+  padding: 16px;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  justify-content: space-between;
+}
+
+.acceptedMarker {
+  display: flex;
+  gap: 0.35rem;
+  color: #09cc7f;
+  /* flex-direction: column; */
+  align-items: center;
+}
+.acceptedMarker p {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.card:active {
+  transform: scale(0.97);
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #09cc7f;
+  background: #ffffff;
+}
+.cardDetails {
+  display: flex;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 14px;
+  /* width: 100%; */
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.time {
+  font-size: 0.75rem;
+  color: #999;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.content {
+  font-size: 0.87rem;
+  color: #656565;
+  margin-top: 4px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

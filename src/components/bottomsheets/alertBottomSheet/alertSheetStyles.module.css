@@ -1,0 +1,78 @@
+.sheetContainer {
+  padding: 1rem;
+  background-color: #fff;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  /* border-bottom: 1px solid #e5e5e5; */
+}
+
+.heading {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 0;
+  gap: 1rem;
+}
+
+.iconWrapper {
+  height: 4.5rem;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background-color: #d9eddf; /* optional, can adjust */
+  border-radius: 0.5rem;
+}
+
+.alertIcon {
+  width: 3rem;
+  height: 3rem;
+  color: #6a9b7e; /* amber/orange */
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  color: #386c5f; /* dark text */
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #9db0a3; /* gray text */
+  text-align: center;
+}
+
+.ctaButton {
+  background-color: #3ccf7f;
+  color: #fff;
+  padding: 12px 22px;
+  width: 90%;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.ctaButton:hover {
+  background-color: #1d4ed8; /* darker blue on hover */
+}
