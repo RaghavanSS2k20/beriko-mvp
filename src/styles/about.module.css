@@ -1,0 +1,150 @@
+.wrapper {
+  background: #f7f7f7;
+  min-height: 100vh;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.emphasis {
+  color: #30cc7f;
+}
+
+.container {
+  text-align: center;
+  flex: 1;
+  max-width: 700px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.heading {
+  font-size: 42px;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.subheading {
+  margin-top: 6px;
+  color: #718096;
+}
+
+/* Bottom section */
+.bottomSection {
+  width: 100%;
+  position: sticky;
+  bottom: 0;
+  max-width: 700px;
+  z-index: 1000;
+  margin-bottom: 40px;
+}
+
+/* Suggestions */
+.tags {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: white;
+  border: 1px solid #e2e8f0;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.tag:hover {
+  background: #f1f5f9;
+}
+
+/* Search */
+.searchBox {
+  position: relative;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 1rem;
+
+  border-radius: 14px !important;
+  height: 54px !important;
+  padding-right: 55px !important;
+}
+.searchBox input:focus {
+  outline: none;
+  border: none;
+  box-shadow: 0 0 0 2px #ccc; /* soft custom focus */
+}
+
+/* Arrow button */
+.searchButton {
+  position: absolute !important;
+  right: 6px;
+  top: 50%;
+  padding: 0.5rem;
+  transform: translateY(-50%);
+  background: #386c5f !important;
+  color: white !important;
+  border-radius: 10px !important;
+}
+
+.searchButton:hover {
+  background: #2f5e53 !important;
+}
+
+.footer {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #9ca3af;
+  text-align: center;
+}
+
+.footer span {
+  font-weight: 600;
+
+  color: #30cc7f;
+}
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+  max-height: 100vh;
+  height: 100%;
+  overflow-y: scroll;
+  width: 100%;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.chatContainer::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.chatMessages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.userMessage {
+  font-size: 1.75rem;
+  font-weight: 700;
+}

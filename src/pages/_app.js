@@ -21,28 +21,43 @@ export default function App({ Component, pageProps }) {
   const hideTabBar =
     router.pathname === "/" ||
     router.asPath.startsWith("/conversation/") ||
+    router.asPath.startsWith("/about/") ||
     router.asPath.startsWith("/index2"); // hide on landing page
-  const hideNavBar = router.pathname === "/"; // 👈 also hide navbar on landing
-
+  const hideNavBar =
+    router.pathname === "/" || router.asPath.startsWith("/about/");
   return (
     <div className="app-wrapper">
-      <div className="mobile-container">
-        <Provider>
-          <Theme appearance="light">
-            <UserProvider>
-              <NavbarProvider>
-                <div className="layout">
-                  {!hideNavBar && <NavBar />}
-                  <div className="content">
-                    <Component {...pageProps} />
+      <Provider>
+        <Theme appearance="light">
+          <UserProvider>
+            <NavbarProvider>
+              {Component.noMobileContainer ? (
+                // Pages WITHOUT mobile container
+                <div className="container">
+                  <div className="layout">
+                    {!hideNavBar && <NavBar />}
+                    <div className="content">
+                      <Component {...pageProps} />
+                    </div>
+                    {!hideTabBar && <TabBar />}
                   </div>
-                  {!hideTabBar && <TabBar />}
                 </div>
-              </NavbarProvider>
-            </UserProvider>
-          </Theme>
-        </Provider>
-      </div>
+              ) : (
+                // Default layout WITH mobile container
+                <div className="mobile-container">
+                  <div className="layout">
+                    {!hideNavBar && <NavBar />}
+                    <div className="content">
+                      <Component {...pageProps} />
+                    </div>
+                    {!hideTabBar && <TabBar />}
+                  </div>
+                </div>
+              )}
+            </NavbarProvider>
+          </UserProvider>
+        </Theme>
+      </Provider>
     </div>
   );
 }
