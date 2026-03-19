@@ -1,7 +1,7 @@
 .wrapper {
   background: #f7f7f7;
-  min-height: 100vh;
-  height: 100vh;
+  min-height: 100%;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -11,6 +11,10 @@
 
 .emphasis {
   color: #30cc7f;
+}
+.emphasisBold {
+  color: #30cc7f;
+  font-weight: 700;
 }
 
 .container {
@@ -51,22 +55,28 @@
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 16px;
+  /* margin-bottom: 16px;
+  padd */
+  padding-top: 10px;
+  padding-bottom: 10px;
   flex-wrap: wrap;
 }
 
 .tag {
-  background: white;
-  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  border: 1px solid rgba(9, 204, 127, 0.4);
   padding: 8px 16px;
   border-radius: 999px;
   cursor: pointer;
   font-size: 14px;
-  transition: 0.2s;
+  color: #386c5f;
+  transition: all 0.2s ease;
 }
 
 .tag:hover {
-  background: #f1f5f9;
+  background: rgba(9, 204, 127, 0.08);
+  color: #09cc7f;
+  border-color: rgba(9, 204, 127, 0.6);
 }
 
 /* Search */
@@ -82,12 +92,19 @@
   height: 54px !important;
   padding-right: 55px !important;
 }
+.searchBox input {
+  transition:
+    box-shadow 0.3s ease,
+    border 0.3s ease; /* Smooth transition */
+}
+
 .searchBox input:focus {
   outline: none;
   border: none;
-  box-shadow: 0 0 0 2px #ccc; /* soft custom focus */
+  box-shadow:
+    0 0 0 2px rgba(9, 204, 127, 0.15),
+    /* softer outer glow */ 0 4px 15px rgba(9, 204, 127, 0.1); /* subtle depth */
 }
-
 /* Arrow button */
 .searchButton {
   position: absolute !important;

@@ -18,13 +18,14 @@ export default function App({ Component, pageProps }) {
       useSystemColorMode: false,
     },
   };
+  console.log(router.pathname);
   const hideTabBar =
     router.pathname === "/" ||
+    router.pathname === "/hi" ||
     router.asPath.startsWith("/conversation/") ||
     router.asPath.startsWith("/about/") ||
     router.asPath.startsWith("/index2"); // hide on landing page
-  const hideNavBar =
-    router.pathname === "/" || router.asPath.startsWith("/about/");
+  const hideNavBar = router.pathname === "/" || router.pathname === "/hi";
   return (
     <div className="app-wrapper">
       <Provider>
