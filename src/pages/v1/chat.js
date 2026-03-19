@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
-import styles from "../styles/chat.module.css";
+import styles from "@/styles/chat.module.css";
 import ChatInput from "@/components/chatInput/chatInputComponent";
 import { useUser } from "@/context/userContext";
 
@@ -57,8 +57,8 @@ export default function ChatPage() {
           prev.map((m, idx) =>
             idx === prev.length - 1 && m.status === "pending"
               ? { ...m, status: "sent" }
-              : m
-          )
+              : m,
+          ),
         );
       }
     });

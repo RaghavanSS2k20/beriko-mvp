@@ -1,4 +1,4 @@
-import styles from "../../styles/index.module.css";
+import styles from "@/styles/index.module.css";
 import { environment } from "@/environment";
 import { useState } from "react";
 import { autocompleteDataFetch } from "@/services/geoApiService";

@@ -1,5 +1,5 @@
 import { Tabs } from "@chakra-ui/react";
-import styles from "../styles/flowers.module.css";
+import styles from "@/styles/flowers.module.css";
 import { useState, useEffect } from "react";
 import ViewFlowersBottomSheet from "@/components/bottomsheets/flowers/viewFlowersBottomSheet/viewFlowersBottomSheetComponent";
 import {

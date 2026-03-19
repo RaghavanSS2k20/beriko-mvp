@@ -1,4 +1,4 @@
-import styles from "../../styles/profile.module.css";
+import styles from "@/styles/profile.module.css";
 import { useEffect, useState } from "react";
 
 import { useUser } from "@/context/userContext";

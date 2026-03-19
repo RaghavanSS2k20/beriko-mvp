@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Conversation from "@/components/conversation/conversationComponent";
-import styles from "../../styles/conversation.module.css";
+import styles from "@/styles/conversation.module.css";
 import { getConversationForUserId } from "@/services/conversationService";
 import { useUser } from "@/context/userContext";
 

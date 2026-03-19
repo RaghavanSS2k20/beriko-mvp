@@ -10,7 +10,7 @@ import { getConversationById } from "@/services/conversationService";
 // import { useUser } from "@/context/u serContext";
 import ChatInput from "@/components/chatInput/chatInputComponent";
 
-import styles from "../../styles/chat.module.css";
+import styles from "@/styles/chat.module.css";
 
 const socket = io(environment.apiUrl); // replace with your backend socket URL
 
@@ -101,7 +101,7 @@ export default function ConversationScreen() {
       setMessages((prev) =>
         prev
           .filter((m) => m.status !== "pending" || m.content !== msg.content)
-          .concat(msg)
+          .concat(msg),
       );
     });
 

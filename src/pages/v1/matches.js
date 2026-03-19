@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavbar } from "@/context/NavbarContext";
 import { getMatches } from "@/services/matchesService";
 import ProfileCard from "@/components/profileCard/profileCard.component";
-import styles from "../styles/matches.module.css";
+import styles from "@/styles/matches.module.css";
 import { markUserFamiliar } from "@/services/userService";
 
 import {
@@ -119,7 +119,7 @@ export default function MatchesScreen() {
       try {
         const conversation_res = await getConversationBetweenUsers(
           userId,
-          data.id
+          data.id,
         );
         const conversation = await conversation_res.json();
         const conversation_id = conversation?.data?.conversation_id;
