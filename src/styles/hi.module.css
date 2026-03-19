@@ -525,6 +525,13 @@
   position: relative;
   z-index: 1;
 }
+.emphasis {
+  color: #30cc7f;
+}
+.emphasisBold {
+  color: #30cc7f;
+  font-weight: 700;
+}
 
 .ctaTitle {
   font-size: clamp(2.5rem, 5vw, 4rem);
