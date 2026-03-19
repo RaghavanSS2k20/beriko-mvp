@@ -1,4 +1,4 @@
-import styles from "../../styles/settings.module.css";
+import styles from "@/styles/settings.module.css";
 import { useEffect, useState } from "react";
 import { useNavbar } from "@/context/NavbarContext";
 import { autocompleteDataFetch } from "@/services/geoApiService";

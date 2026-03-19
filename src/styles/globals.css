@@ -31,6 +31,15 @@ p {
   flex-direction: column;
 }
 
+.container {
+  width: 100vw;
+  /* max-width: 420px; your mobile width */
+  height: 100vh;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+
 .layout {
   display: flex;
   flex-direction: column;

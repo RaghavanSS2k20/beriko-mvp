@@ -8,7 +8,14 @@ import { ChevronLeft, Filter, User, MessageCircle } from "lucide-react";
 export default function NavBar() {
   const router = useRouter();
   const { navbarData } = useNavbar();
-  const { title, showFilter, avatar, subtitle, backRoute } = navbarData;
+  const {
+    title,
+    showFilter,
+    avatar,
+    subtitle,
+    backRoute,
+    showChat = true,
+  } = navbarData;
 
   const isActive = router.pathname === "/conversation";
   return (
@@ -42,15 +49,17 @@ export default function NavBar() {
               <Filter size={17} />
             </button>
           )}
-          <button
-            className={styles.filterBtn}
-            style={{
-              color: isActive ? "#09cc7f" : "inherit",
-            }}
-            onClick={() => router.push("/conversation")}
-          >
-            <MessageCircle size={17} strokeWidth={2.5} />
-          </button>
+          {showChat && (
+            <button
+              className={styles.filterBtn}
+              style={{
+                color: isActive ? "#09cc7f" : "inherit",
+              }}
+              onClick={() => router.push("/conversation")}
+            >
+              <MessageCircle size={17} strokeWidth={2.5} />
+            </button>
+          )}
         </div>
       </div>
     </nav>

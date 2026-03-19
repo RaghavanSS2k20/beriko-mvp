@@ -1,0 +1,641 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* ===================================
+   SECTION 1: HERO SECTION
+   Pixel-perfect gradient with noise texture
+   =================================== */
+
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  /* Gradient background - matching the reference image exactly */
+  background: linear-gradient(
+    180deg,
+    #1a9b7f 0%,
+    #1a9b7f 10%,
+    #24a67e 25%,
+    #2eb17d 40%,
+    #38bc7c 55%,
+    #42c77b 70%,
+    #4cd27a 85%,
+    #56dd79 100%
+  );
+
+  /* Critical: Noise texture overlay */
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E"),
+    linear-gradient(
+      180deg,
+      #1a9b7f 0%,
+      #1a9b7f 10%,
+      #24a67e 25%,
+      #2eb17d 40%,
+      #38bc7c 55%,
+      #42c77b 70%,
+      #4cd27a 85%,
+      #56dd79 100%
+    );
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* Alternative noise implementation using CSS (more performant) */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 1;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.heroContent {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 1;
+  position: relative;
+  padding: 2rem;
+  /* max-width: 900px; */
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.heroTitle {
+  /* font-size: clamp(4rem, 12vw, 8rem);
+  font */
+  font-size: 4rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.heroSubtitle {
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  color: #ffffff;
+  margin: 1rem 0 0 0;
+  letter-spacing: -0.01em;
+  opacity: 0.95;
+}
+
+.heroDescription {
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  color: rgba(255, 255, 255, 0.9);
+  margin: 1.5rem auto 0;
+  max-width: 700px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.heroButton {
+  margin-top: 2.5rem;
+  padding: 1.125rem 3.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #0d7a5f;
+  background: #ffffff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  font-family: inherit;
+}
+
+.heroButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  background: #f8f9fa;
+}
+
+.heroButton:active {
+  transform: translateY(0);
+}
+
+/* ===================================
+   SECTION 2: FEATURES
+   =================================== */
+
+.features {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Darker green background matching the card image */
+  background: #1d9f83;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-size: cover;
+  opacity: 1;
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+/* Noise overlay for features section */
+.features::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.sectionContent {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.sectionTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 4rem 0;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.featureCard {
+  padding: 2.5rem 2rem;
+  text-align: left;
+  /* Glass-morphism effect */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle gradient overlay on hover */
+.featureCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+/* Interactive light gradient that follows mouse */
+.featureCard::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.08) 20%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.featureCard:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.featureCard:hover::before {
+  opacity: 1;
+}
+
+.featureCard:hover::after {
+  opacity: 1;
+  animation: rotateGradient 3s linear infinite;
+}
+
+@keyframes rotateGradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.featureIcon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.featureIcon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.featureCard h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.75rem 0;
+  letter-spacing: -0.01em;
+}
+
+.featureCard p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ===================================
+   SECTION 3: HOW IT WORKS
+   =================================== */
+
+.howItWorks {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1c9b7f;
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.howItWorks::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); */
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.stepsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0;
+  margin-top: 4rem;
+  max-width: 1400px;
+  width: 100%;
+  position: relative;
+}
+
+.step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.stepNumberWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.stepNumber {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #2eb17d 0%, #3bc98c 50%, #56dd79 100%);
+  color: #ffffff;
+  font-size: 3rem;
+  font-weight: 800;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 15px 40px rgba(46, 177, 125, 0.25),
+    0 5px 15px rgba(46, 177, 125, 0.15);
+  position: relative;
+  z-index: 2;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stepNumber::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: linear-gradient(
+    135deg,
+    rgba(46, 177, 125, 0.2) 0%,
+    rgba(86, 221, 121, 0.2) 100%
+  );
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.step:hover .stepNumber {
+  transform: scale(1.1) translateY(-5px);
+  box-shadow:
+    0 20px 50px rgba(46, 177, 125, 0.35),
+    0 10px 20px rgba(46, 177, 125, 0.2);
+}
+
+.step:hover .stepNumber::before {
+  opacity: 1;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.1;
+  }
+}
+
+.stepLine {
+  width: 3px;
+  height: 60px;
+  background: linear-gradient(180deg, #56dd79 0%, rgba(86, 221, 121, 0.5) 100%);
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(86, 221, 121, 0.3);
+}
+
+/* Horizontal connecting lines between steps */
+.step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50px;
+  left: calc(50% + 50px);
+  width: calc(100% - 100px);
+  height: 3px;
+  background: linear-gradient(90deg, #56dd79 0%, rgba(86, 221, 121, 0.4) 100%);
+  z-index: 1;
+  box-shadow: 0 0 8px rgba(86, 221, 121, 0.25);
+}
+
+.stepContent {
+  text-align: center;
+  max-width: 350px;
+  background: #ffffff;
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(46, 177, 125, 0.1);
+}
+
+.step:hover .stepContent {
+  transform: translateY(-8px);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.12),
+    0 5px 15px rgba(0, 0, 0, 0.08);
+  border-color: rgba(46, 177, 125, 0.3);
+}
+
+.step h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.01em;
+}
+
+.step p {
+  font-size: 1.0625rem;
+  color: #5a6c7d;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ===================================
+   SECTION 4: CTA
+   =================================== */
+
+.cta {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #1a9b7f 0%, #2eb17d 50%, #56dd79 100%);
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+/* Noise texture for CTA section too */
+.cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); */
+  opacity: 0.1;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.ctaContent {
+  text-align: center;
+  max-width: 900px;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.emphasis {
+  color: #30cc7f;
+}
+.emphasisBold {
+  color: #30cc7f;
+  font-weight: 700;
+}
+
+.ctaTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  color: #ffffff;
+  /* margin: 0 0 1.5rem 0; */
+  letter-spacing: -0.02em;
+}
+
+.ctaSubtitle {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  color: #ffffff;
+  opacity: 0.95;
+  margin: 0 0 3rem 0;
+  line-height: 1.5;
+}
+
+.ctaButton {
+  padding: 1.25rem 4rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2eb17d;
+  background: #ffffff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  font-family: inherit;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  background: #f8f9fa;
+}
+
+.ctaButton:active {
+  transform: translateY(0);
+}
+
+.ctaNote {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.02em;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 100svh;
+  }
+
+  .features,
+  .howItWorks,
+  .cta {
+    padding: 4rem 1.5rem;
+    min-height: auto;
+  }
+
+  .featureGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .sectionTitle {
+    margin-bottom: 2rem;
+  }
+
+  /* Mobile layout for How It Works */
+  .stepsContainer {
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .step {
+    padding: 0;
+    max-width: 400px;
+  }
+
+  .step:not(:last-child)::after {
+    display: none;
+  }
+
+  .stepLine {
+    height: 40px;
+    bottom: -40px;
+  }
+
+  .stepNumber {
+    width: 80px;
+    height: 80px;
+    font-size: 2.5rem;
+  }
+
+  .stepContent {
+    padding: 2rem 1.5rem;
+  }
+}
+.container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}

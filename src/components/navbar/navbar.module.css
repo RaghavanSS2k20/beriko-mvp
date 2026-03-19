@@ -13,7 +13,7 @@
 
 .navContent {
   width: 95%;
-  max-width: 700px;
+  /* max-width: 700px; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -41,7 +41,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.15s ease-in-out, color 0.15s ease-in-out;
+  transition:
+    transform 0.15s ease-in-out,
+    color 0.15s ease-in-out;
 }
 
 .backBtn:hover,
@@ -66,6 +68,13 @@
   color: #09cc7f;
   width: 20px;
   height: 20px;
+}
+
+.rightElements {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .navTitle {

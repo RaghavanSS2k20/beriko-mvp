@@ -1,0 +1,83 @@
+<profile>
+    <name>Raghavan M</name>
+    <location>Coimbatore, India</location>
+
+    <about>
+        <description>
+            Raghavan M is a software engineer who loves building systems from scratch and creating products that deliver real-world value. He enjoys deeply understanding problems and transforming ideas into practical software solutions that people can actually use.
+        </description>
+    </about>
+
+    <education>
+        <degree>M.Sc. Software Systems</degree>
+        <institution>PSG College of Technology</institution>
+        <city>Coimbatore</city>
+        <focus>Algorithms, Problem Solving, Software Engineering</focus>
+    </education>
+
+    <experience>
+        <company>Predigle India</company>
+        <role>Software Engineer</role>
+        <work>
+            Designed and implemented a policy-based IAM engine that significantly reduced authorization latency and improved access control efficiency.
+        </work>
+        <work>
+            Enhanced a Django-based Q&amp;A platform into an LLM-powered conversational system by improving prompts, integrating APIs, and enabling persistent product-aware context.
+        </work>
+        <work>
+        <internship>
+            Contributed to building a RAG-based competitor product-mapping system that automated a large portion of manual product mapping tasks.
+        </internship>
+        </work>
+    </experience>
+
+    <internship>
+        <company>Acquireeasy</company>
+        <role>Full Stack Developer Intern</role>
+        <work>
+            Developed most of a full-stack marketplace platform for buying and selling startups and contributed product ideas to improve the user experience and workflow.
+        </work>
+    </internship>
+
+    <skills>
+        <languages>Python, Java, C++</languages>
+        <backend>Django, Flask, Express</backend>
+        <frontend>React, Next.js, Angular</frontend>
+        <ai>
+            Generative AI, RAG pipelines, Prompt Engineering, Context-aware LLM systems
+        </ai>
+    </skills>
+
+    <projects>
+        <project>
+            <name>Beriko</name>
+            <description>
+                An AI-powered personality-based dating platform that uses conversational trait extraction and similarity metrics to improve meaningful matches.
+            </description>
+        </project>
+        <project>
+            <name>Staybroke</name>
+            <description>
+                A personal and shared expense tracking tool integrating APIs and automation to simplify financial tracking.
+            </description>
+        </project>
+    </projects>
+
+    <interests>
+        <building>
+            Loves building products from scratch and enjoys seeing technology create real value for people.
+        </building>
+        <music>
+            Passionate about the violin and enjoys listening to, practicing, and playing the instrument regularly.
+        </music>
+        <filmscore>
+            Deeply appreciates cinematic music and especially enjoys the film scores composed by Clint Mansell.
+        </filmscore>
+        <movies>
+            Loves watching movies and exploring storytelling through cinema.
+        </movies>
+        <formula1>
+            A big fan of Formula 1 racing and enjoys following the sport, its technology, strategy, and the intensity of the competition. He is Fan of none but a great fan of sport as whole!
+        </formula1>
+    </interests>
+</profile>

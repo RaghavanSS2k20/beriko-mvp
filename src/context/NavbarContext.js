@@ -10,6 +10,7 @@ export function NavbarProvider({ children }) {
     avatar: null, // optional avatar
     subtitle: null, // optional subtitle/status
     backRoute: null, // optional back route
+    showChat: true,
   });
 
   const updateNavbar = (data) => {
